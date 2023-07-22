@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf5f81764fb6284c9f902b2988a32e4, type: 3}
+  m_Name: EditorSceneDataSO
+  m_EditorClassIdentifier: 
+  ScenesData:
+  - SceneGuid: 8e996605944541a4e88630b733aa21cb
+    IsVisible: 1
+  - SceneGuid: 8c9cfa26abfee488c85f1582747f6a02
+    IsVisible: 1
+  - SceneGuid: 57dad2ebba02f084f960d7ce70255b33
+    IsVisible: 1
+  - SceneGuid: 4fc5272968c73894f8263b8ea348870b
+    IsVisible: 1
+  - SceneGuid: bd121043d307e5148b5a43de010ee841
+    IsVisible: 1
+  - SceneGuid: 2cda990e2423bbf4892e6590ba056729
+    IsVisible: 0
+  - SceneGuid: e026d555eae824f65922633f37a14385
+    IsVisible: 0
+  - SceneGuid: 5cae0d87369a2405eaa962b8d920b947
+    IsVisible: 0
+  VisibleScenesData:
+  - SceneGuid: 8e996605944541a4e88630b733aa21cb
+    IsVisible: 1
+  - SceneGuid: 8c9cfa26abfee488c85f1582747f6a02
+    IsVisible: 1
+  - SceneGuid: 57dad2ebba02f084f960d7ce70255b33
+    IsVisible: 1
+  - SceneGuid: 4fc5272968c73894f8263b8ea348870b
+    IsVisible: 1
+  - SceneGuid: bd121043d307e5148b5a43de010ee841
+    IsVisible: 1
