@@ -133,16 +133,29 @@ namespace Kanbarudesu.Editor.Utility
             }
 
             bool isLoadedScene = EditorSceneManager.GetActiveScene().name == sceneAsset.name;
-            EditorGUI.BeginDisabledGroup(EditorApplication.isPlaying || isLoadedScene);
+            EditorGUI.BeginDisabledGroup(EditorApplication.isPlaying);
             {
-                GUI.Label(new Rect(rect.x, rect.y, rect.width - 30f, EditorGUIUtility.singleLineHeight + 5f), sceneAsset.name);
+                GUI.Label(new Rect(rect.x, rect.y, rect.width - 60f, EditorGUIUtility.singleLineHeight + 5f), sceneAsset.name);
+
                 GUIContent visibleGui = new GUIContent(isVisibleProperty.boolValue ?
                         EditorGUIUtility.IconContent("animationvisibilitytoggleon@2x") :
                         EditorGUIUtility.IconContent("animationvisibilitytoggleoff@2x"));
                 visibleGui.tooltip = isVisibleProperty.boolValue ? "Shown" : "Hidden";
-                if (GUI.Button(new Rect(rect.xMax - 30f, rect.y, 30f, EditorGUIUtility.singleLineHeight + 5f), visibleGui))
+                EditorGUI.BeginDisabledGroup(isLoadedScene);
                 {
-                    isVisibleProperty.boolValue = !isVisibleProperty.boolValue;
+                    if (GUI.Button(new Rect(rect.xMax - 60f, rect.y, 30f, EditorGUIUtility.singleLineHeight + 5f), visibleGui))
+                    {
+                        isVisibleProperty.boolValue = !isVisibleProperty.boolValue;
+                    }
+                }
+                EditorGUI.EndDisabledGroup();
+                
+                GUIContent pingButton = EditorGUIUtility.IconContent("d_FolderOpened Icon");
+                pingButton.tooltip = "Locate Scene";
+                if (GUI.Button(new Rect(rect.xMax - 30f, rect.y, 30f, EditorGUIUtility.singleLineHeight + 5f), pingButton))
+                {
+                    EditorUtility.FocusProjectWindow();
+                    EditorGUIUtility.PingObject(sceneAsset);
                 }
             }
             EditorGUI.EndDisabledGroup();
@@ -171,12 +184,21 @@ namespace Kanbarudesu.Editor.Utility
                 bool isLoadedScene = EditorSceneManager.GetActiveScene().name == sceneAsset.name;
                 var oldColor = GUI.backgroundColor;
                 GUI.backgroundColor = isLoadedScene ? Color.green : oldColor;
-                if (GUI.Button(new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight + 5f), sceneAsset.name, buttonStyle))
+                if (GUI.Button(new Rect(rect.x, rect.y, rect.width - 30f, EditorGUIUtility.singleLineHeight + 5f), sceneAsset.name, buttonStyle))
                 {
                     if (EditorSceneManager.GetActiveScene().name != sceneAsset.name)
                         EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Single);
                 }
                 GUI.backgroundColor = oldColor;
+
+                GUIContent pingButton = EditorGUIUtility.IconContent("d_FolderOpened Icon");
+                pingButton.tooltip = "Locate Scene";
+                if (GUI.Button(new Rect(rect.xMax - 30f, rect.y, 30f, EditorGUIUtility.singleLineHeight + 5f), pingButton))
+                {
+                    EditorUtility.FocusProjectWindow();
+                    EditorGUIUtility.PingObject(sceneAsset);
+                    Debug.Log(Application.dataPath);
+                }
             }
             EditorGUI.EndDisabledGroup();
         }

@@ -13,7 +13,8 @@ namespace Kanbarudesu.Editor.Utility
 
         public void PopulateScenesData()
         {
-            var guids = AssetDatabase.FindAssets("t:Scene").ToList();
+            string[] assetsPath = { "Assets" };
+            var guids = AssetDatabase.FindAssets("t:Scene", assetsPath).ToList();
             if (ScenesData.Count > guids.Count)
             {
                 ScenesData.RemoveAll(data => !guids.Contains(data.SceneGuid));
