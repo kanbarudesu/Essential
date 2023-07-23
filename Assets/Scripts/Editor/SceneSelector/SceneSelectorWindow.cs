@@ -197,7 +197,6 @@ namespace Kanbarudesu.Editor.Utility
                 {
                     EditorUtility.FocusProjectWindow();
                     EditorGUIUtility.PingObject(sceneAsset);
-                    Debug.Log(Application.dataPath);
                 }
             }
             EditorGUI.EndDisabledGroup();
