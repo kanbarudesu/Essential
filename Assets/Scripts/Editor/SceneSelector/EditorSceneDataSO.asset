@@ -13,30 +13,28 @@ MonoBehaviour:
   m_Name: EditorSceneDataSO
   m_EditorClassIdentifier: 
   ScenesData:
-  - SceneGuid: 8e996605944541a4e88630b733aa21cb
-    IsVisible: 1
-  - SceneGuid: 8c9cfa26abfee488c85f1582747f6a02
-    IsVisible: 1
-  - SceneGuid: 57dad2ebba02f084f960d7ce70255b33
-    IsVisible: 1
   - SceneGuid: 4fc5272968c73894f8263b8ea348870b
     IsVisible: 1
   - SceneGuid: bd121043d307e5148b5a43de010ee841
+    IsVisible: 1
+  - SceneGuid: 8e996605944541a4e88630b733aa21cb
+    IsVisible: 1
+  - SceneGuid: 57dad2ebba02f084f960d7ce70255b33
+    IsVisible: 1
+  - SceneGuid: 8c9cfa26abfee488c85f1582747f6a02
     IsVisible: 1
   - SceneGuid: 2cda990e2423bbf4892e6590ba056729
     IsVisible: 0
-  - SceneGuid: e026d555eae824f65922633f37a14385
-    IsVisible: 0
-  - SceneGuid: 5cae0d87369a2405eaa962b8d920b947
-    IsVisible: 0
   VisibleScenesData:
-  - SceneGuid: 8e996605944541a4e88630b733aa21cb
-    IsVisible: 1
-  - SceneGuid: 8c9cfa26abfee488c85f1582747f6a02
-    IsVisible: 1
-  - SceneGuid: 57dad2ebba02f084f960d7ce70255b33
-    IsVisible: 1
   - SceneGuid: 4fc5272968c73894f8263b8ea348870b
     IsVisible: 1
   - SceneGuid: bd121043d307e5148b5a43de010ee841
+    IsVisible: 1
+  - SceneGuid: 8e996605944541a4e88630b733aa21cb
+    IsVisible: 1
+  - SceneGuid: 57dad2ebba02f084f960d7ce70255b33
+    IsVisible: 1
+  - SceneGuid: 8c9cfa26abfee488c85f1582747f6a02
+    IsVisible: 1
+  - SceneGuid: 2cda990e2423bbf4892e6590ba056729
     IsVisible: 1

@@ -58,11 +58,13 @@ namespace Kanbarudesu.Editor.Utility
 
         private void LoadSceneDataAsset()
         {
-            sceneData = AssetDatabase.LoadAssetAtPath("Assets/Scripts/Editor/SceneSelector/EditorSceneDataSO.asset", typeof(ScriptableObject)) as EditorSceneDataSO;
+            string assetPath = AssetDatabase.GUIDToAssetPath (AssetDatabase.FindAssets ( $"t:Script {nameof(SceneSelectorWindow)}" )[0]);
+            assetPath = assetPath.Replace("/SceneSelectorWindow.cs", "");
+            sceneData = AssetDatabase.LoadAssetAtPath(assetPath + "/EditorSceneDataSO.asset", typeof(ScriptableObject)) as EditorSceneDataSO;
             if (sceneData == null)
             {
                 sceneData = ScriptableObject.CreateInstance<EditorSceneDataSO>();
-                AssetDatabase.CreateAsset(sceneData, "Assets/Scripts/Editor/SceneSelector/EditorSceneDataSO.asset");
+                AssetDatabase.CreateAsset(sceneData, assetPath + "/EditorSceneDataSO.asset");
             }
         }
 
@@ -149,7 +151,7 @@ namespace Kanbarudesu.Editor.Utility
                     }
                 }
                 EditorGUI.EndDisabledGroup();
-                
+
                 GUIContent pingButton = EditorGUIUtility.IconContent("d_FolderOpened Icon");
                 pingButton.tooltip = "Locate Scene";
                 if (GUI.Button(new Rect(rect.xMax - 30f, rect.y, 30f, EditorGUIUtility.singleLineHeight + 5f), pingButton))
