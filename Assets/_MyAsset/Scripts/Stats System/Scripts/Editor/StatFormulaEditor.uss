@@ -1,0 +1,29 @@
+.unity-foldout {
+    -unity-font-style: bold;
+    background-color: var(--unity-theme-border-color-11);
+    border-top-color: var(--unity-theme-border-color-5);
+    border-top-width: 1px;
+}
+
+.unity-foldout__toggle {
+    height: 16px;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+.unity-foldout__toggle .unity-text-element {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.unity-foldout__content {
+    flex-shrink: 0;
+    -unity-font-style: normal;
+    background-color: var(--unity-theme-background-color-17);
+    margin-left: 0;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 0;
+}

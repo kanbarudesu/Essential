@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa065f89f1ec8c44b526ee587a8d42a, type: 3}
+  m_Name: Strength Buff
+  m_EditorClassIdentifier: 
+  EffectName: Strength Buff
+  Duration: -1
+  Description: 
+  Icon: {fileID: 0}
+  Id: {fileID: 11400000, guid: 5cdefa4d51880124192c04fdfde86520, type: 2}
+  StackingRule: 0
+  Modifiers:
+  - Type: 100
+    Value: 1
+    IsPercentage: 0

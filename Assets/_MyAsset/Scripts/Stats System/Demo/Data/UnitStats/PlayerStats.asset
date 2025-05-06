@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c8fe6745700ad449eac481688d2fbd, type: 3}
+  m_Name: PlayerStats
+  m_EditorClassIdentifier: 
+  Stats:
+  - Type: 1
+    BaseValue: 10
+    MinValue: 0
+    MaxValue: 100
+    HasRuntimeValue: 0
+    Formula: {fileID: 11400000, guid: 4ac564b666ea58d48806529016558ea9, type: 2}
+    Modifiers: []
+  - Type: 2
+    BaseValue: 0
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 0
+    Formula: {fileID: 0}
+    Modifiers: []
+  - Type: 0
+    BaseValue: 3
+    MinValue: 0
+    MaxValue: 100
+    HasRuntimeValue: 0
+    Formula: {fileID: 0}
+    Modifiers: []
+  - Type: 7
+    BaseValue: 4
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 0
+    Formula: {fileID: 0}
+    Modifiers: []
+  - Type: 3
+    BaseValue: 2
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 0
+    Formula: {fileID: 0}
+    Modifiers: []
+  - Type: 4
+    BaseValue: 100
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 1
+    Formula: {fileID: 11400000, guid: cbb1075f243c296429ac52df05a3174e, type: 2}
+    Modifiers: []
+  - Type: 5
+    BaseValue: 50
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 1
+    Formula: {fileID: 0}
+    Modifiers: []
+  - Type: 6
+    BaseValue: 100
+    MinValue: 0
+    MaxValue: 100
+    HasRuntimeValue: 0
+    Formula: {fileID: 0}
+    Modifiers: []
+  - Type: 100
+    BaseValue: 4
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 0
+    Formula: {fileID: 0}
+    Modifiers: []
+  - Type: 101
+    BaseValue: 0
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 0
+    Formula: {fileID: 0}
+    Modifiers: []

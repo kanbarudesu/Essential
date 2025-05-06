@@ -1,0 +1,16 @@
+{
+    "name": "Kanbarudesu.StatSystem.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f9a983c494193c54d8d49067ce1764b4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

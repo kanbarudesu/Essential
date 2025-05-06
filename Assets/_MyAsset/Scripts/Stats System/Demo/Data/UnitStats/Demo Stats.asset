@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c8fe6745700ad449eac481688d2fbd, type: 3}
+  m_Name: Demo Stats
+  m_EditorClassIdentifier: 
+  Stats:
+  - Type: 100
+    BaseValue: 10
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 0
+    Formula: {fileID: 0}
+    Modifiers: []
+  - Type: 101
+    BaseValue: 4
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 0
+    Formula: {fileID: 0}
+    Modifiers: []
+  - Type: 104
+    BaseValue: 7
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 0
+    Formula: {fileID: 0}
+    Modifiers: []
+  - Type: 102
+    BaseValue: 5
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 0
+    Formula: {fileID: 0}
+    Modifiers: []
+  - Type: 0
+    BaseValue: 3
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 0
+    Formula: {fileID: 11400000, guid: 4629bfade88bc00428e0d4077a325342, type: 2}
+    Modifiers: []
+  - Type: 2
+    BaseValue: 10
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 0
+    Formula: {fileID: 11400000, guid: 6967aed5d8f91304f8124fe40729e40f, type: 2}
+    Modifiers: []
+  - Type: 3
+    BaseValue: 5
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 0
+    Formula: {fileID: 11400000, guid: 58e7c30ceecba5743ae9935929641a08, type: 2}
+    Modifiers: []
+  - Type: 4
+    BaseValue: 50
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 1
+    Formula: {fileID: 11400000, guid: 26ab0a7966d97e24b8af301f953ab9d7, type: 2}
+    Modifiers: []
+  - Type: 5
+    BaseValue: 25
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 1
+    Formula: {fileID: 11400000, guid: da249040bd54eee44b6e5f2c5843eaac, type: 2}
+    Modifiers: []
+  - Type: 200
+    BaseValue: 1
+    MinValue: 0
+    MaxValue: 30
+    HasRuntimeValue: 0
+    Formula: {fileID: 0}
+    Modifiers: []
+  - Type: 201
+    BaseValue: 0
+    MinValue: 0
+    MaxValue: -1
+    HasRuntimeValue: 1
+    Formula: {fileID: 11400000, guid: 1534955d235731748b660af3fbb585c5, type: 2}
+    Modifiers: []
