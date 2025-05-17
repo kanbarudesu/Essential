@@ -227,12 +227,15 @@ namespace Kanbarudesu.StatSystem.Editor
                 EditorGUIUtility.SetIconSize(new Vector2(15, 15));
                 if (GUILayout.Button(folderIcon, GUILayout.Width(30)))
                 {
-                    string selectedFolder = EditorUtility.OpenFolderPanel("Select Folder", currentManager.FolderPath, "");
-                    if (!string.IsNullOrEmpty(selectedFolder) && selectedFolder.StartsWith(Application.dataPath))
+                    EditorApplication.delayCall += () =>
                     {
-                        string relativePath = "Assets" + selectedFolder.Substring(Application.dataPath.Length);
-                        currentManager.FolderPath = relativePath;
-                    }
+                        string selectedFolder = EditorUtility.OpenFolderPanel("Select Folder", currentManager.FolderPath, "");
+                        if (!string.IsNullOrEmpty(selectedFolder) && selectedFolder.StartsWith(Application.dataPath))
+                        {
+                            string relativePath = "Assets" + selectedFolder.Substring(Application.dataPath.Length);
+                            currentManager.FolderPath = relativePath;
+                        }
+                    };
                 }
                 EditorGUILayout.EndHorizontal();
 
