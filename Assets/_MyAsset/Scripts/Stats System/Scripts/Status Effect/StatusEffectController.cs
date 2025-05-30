@@ -35,7 +35,7 @@ namespace Kanbarudesu.StatSystem
                     break;
 
                 case StatusStackingRule.Refresh:
-                    if (existStatusEffect != null)
+                    if (existStatusEffect != null  && existStatusEffect.Count > 0)
                     {
                         existStatusEffect[0].RefreshTime();
                         Debug.Log($"Refreshed buff: <color=green>{statusEffect.EffectName}</color>");

@@ -18,6 +18,9 @@ namespace Kanbarudesu.StatSystem
 
         private ExpressionContext context = new();
 
+        [NonSerialized]
+        private StatPreviewContext _previewContext;
+
         public void InitializeUnitStats()
         {
             statDictionary.Clear();
@@ -149,6 +152,14 @@ namespace Kanbarudesu.StatSystem
             }
         }
 
+        public void ClearAllModifiers()
+        {
+            foreach (var stat in Stats)
+            {
+                stat.ClearModifiers();
+            }
+        }
+
         public void RegisterStatChange(StatType type, Action<float> callback)
         {
             if (TryGetStat(type, out Stat stat))
@@ -183,6 +194,74 @@ namespace Kanbarudesu.StatSystem
             }
             Debug.LogWarning($"{type} type not found in {name} Data", this);
             return null;
+        }
+
+        public Dictionary<StatType, StatPreviewChange> PreviewStatChanges(Dictionary<StatType, List<StatModifier>> modifiersPerStat)
+        {
+            // Initialize preview context if null
+            this._previewContext ??= new StatPreviewContext();
+
+            _previewContext.Clear();
+
+            //Collect affected stat types
+            foreach (var kvp in modifiersPerStat)
+            {
+                var sourceType = kvp.Key;
+
+                if (dependentStats.TryGetValue(sourceType, out var dependents))
+                {
+                    foreach (var dependentType in dependents)
+                    {
+                        _previewContext.AffectedStatTypes.Add(dependentType);
+                    }
+                }
+            }
+
+            //Snapshot original values
+            foreach (var type in _previewContext.AffectedStatTypes)
+            {
+                float original = GetStatFormulaValue(type);
+                _previewContext.StatChanges[type] = new StatPreviewChange(original, original);
+            }
+
+            //Apply modifiers temporarily
+            foreach (var kvp in modifiersPerStat)
+            {
+                if (!statDictionary.TryGetValue(kvp.Key, out var stat))
+                    continue;
+
+                var list = new List<StatModifier>(kvp.Value.Count);
+                foreach (var mod in kvp.Value)
+                {
+                    stat.AddModifier(mod, shouldNotifyChange: false);
+                    list.Add(mod);
+                }
+
+                _previewContext.AppliedModifiers[stat] = list;
+            }
+
+            //Recalculate affected values
+            foreach (var type in _previewContext.AffectedStatTypes)
+            {
+                _previewContext.StatChanges[type].After = GetStatFormulaValue(type);
+            }
+
+            //Remove temp modifiers
+            foreach (var kvp in _previewContext.AppliedModifiers)
+            {
+                foreach (var mod in kvp.Value)
+                {
+                    kvp.Key.RemoveModifier(mod, shouldNotifyChange: false);
+                }
+            }
+
+            return _previewContext.StatChanges;
+        }
+        
+        public List<(StatType stat, float before, float after)> GetStatPreviewChanges(Dictionary<StatType, List<StatModifier>> previewMods)
+        {
+            var raw = PreviewStatChanges(previewMods);
+            return raw.Select(kvp => (kvp.Key, kvp.Value.Before, kvp.Value.After)).ToList();
         }
 
 #if UNITY_EDITOR

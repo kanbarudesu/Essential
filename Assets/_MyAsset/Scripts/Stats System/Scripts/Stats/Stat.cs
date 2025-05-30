@@ -77,7 +77,9 @@ namespace Kanbarudesu.StatSystem
         {
             Modifiers.Add(mod);
             if (shouldNotifyChange)
+            {
                 OnStatChanged?.Invoke(GetFinalValue());
+            }
         }
 
         public void RemoveModifier(StatModifier mod, bool shouldNotifyChange = true)
@@ -106,16 +108,11 @@ namespace Kanbarudesu.StatSystem
 
         private float ValidateValue(float value)
         {
-            if (!HasMaxValue)
-            {
-                return value;
-            }
-
             if (value < MinValue)
             {
                 value = MinValue;
             }
-            else if (value > MaxValue)
+            else if (value > MaxValue && HasMaxValue)
             {
                 value = MaxValue;
             }
