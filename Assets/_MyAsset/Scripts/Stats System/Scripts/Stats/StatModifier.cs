@@ -6,5 +6,6 @@ namespace Kanbarudesu.StatSystem
         public StatType Type;
         public float Value;
         public bool IsPercentage;
+        public bool ShouldAffectRuntimeStat;
     }
 }

@@ -136,6 +136,10 @@ namespace Kanbarudesu.StatSystem
 
             if (TryGetRuntimeStat(type, out RuntimeStat runtimeStat))
             {
+                if (modifier.ShouldAffectRuntimeStat)
+                {
+                    runtimeStat.Add(modifier.Value);
+                }
                 runtimeStat.UpdateMaxStatValue();
             }
         }
