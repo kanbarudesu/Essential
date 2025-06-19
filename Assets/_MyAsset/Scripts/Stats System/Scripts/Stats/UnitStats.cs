@@ -196,6 +196,11 @@ namespace Kanbarudesu.StatSystem
             return null;
         }
 
+        public IEnumerable<Stat> GetVisibleStats()
+        {
+            return statDictionary.Values.Where(s => !s.IsHiddenStat);
+        }
+
         public Dictionary<StatType, StatPreviewChange> PreviewStatChanges(Dictionary<StatType, List<StatModifier>> modifiersPerStat)
         {
             // Initialize preview context if null
@@ -257,7 +262,7 @@ namespace Kanbarudesu.StatSystem
 
             return _previewContext.StatChanges;
         }
-        
+
         public List<(StatType stat, float before, float after)> GetStatPreviewChanges(Dictionary<StatType, List<StatModifier>> previewMods)
         {
             var raw = PreviewStatChanges(previewMods);
@@ -275,7 +280,7 @@ namespace Kanbarudesu.StatSystem
                 runtimeStat.ClearEventHooks();
             }
         }
-        
+
 #if UNITY_EDITOR
         [ContextMenu("Log Stat Dependency Graph")]
         public void LogDependencyGraph()

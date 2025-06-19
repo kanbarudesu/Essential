@@ -13,7 +13,8 @@ namespace Kanbarudesu.StatSystem
         public float MinValue = 0f;
         [Tooltip("Set to -1 for no maximum value")]
         public float MaxValue = -1f;
-        public bool HasRuntimeValue = false;
+        public bool HasRuntimeValue;
+        public bool IsHiddenStat;
         public StatFormula Formula;
         public List<StatModifier> Modifiers = new List<StatModifier>();
 
