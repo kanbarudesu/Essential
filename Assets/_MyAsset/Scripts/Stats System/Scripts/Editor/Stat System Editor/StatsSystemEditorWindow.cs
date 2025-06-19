@@ -40,10 +40,10 @@ namespace Kanbarudesu.StatSystem.Editor
 
         private void OnEnable()
         {
-            unitStatsAssetEditor = new UnitStatsAssetEditor(EditorPrefs.GetString("UnitStatsFolder", "Assets/Data/UnitStats"));
-            statusEffectsAssetEditor = new StatusEffectsAssetEditor(EditorPrefs.GetString("StatusEffectsFolder", "Assets/Data/StatusEffects"));
-            identifiersAssetEditor = new IdentifiersAssetEditor(EditorPrefs.GetString("IdentifierFolder", "Assets/Data/StatusEffectIdentifiers"));
-            statFormulaAssetEditor = new StatFormulaAssetEditor(EditorPrefs.GetString("StatFormulaFolder", "Assets/Data/StatFormulas"));
+            unitStatsAssetEditor = new UnitStatsAssetEditor(EditorPrefs.GetString("UnitStatsFolder", "Assets/Data/UnitStats"), this);
+            statusEffectsAssetEditor = new StatusEffectsAssetEditor(EditorPrefs.GetString("StatusEffectsFolder", "Assets/Data/StatusEffects"), this);
+            identifiersAssetEditor = new IdentifiersAssetEditor(EditorPrefs.GetString("IdentifierFolder", "Assets/Data/StatusEffectIdentifiers"), this);
+            statFormulaAssetEditor = new StatFormulaAssetEditor(EditorPrefs.GetString("StatFormulaFolder", "Assets/Data/StatFormulas"), this);
             statTypeEnumEditor = new StatTypeEnumEditor();
 
             RefreshAll();
@@ -145,7 +145,7 @@ namespace Kanbarudesu.StatSystem.Editor
             }
         }
 
-        private void DrawPanelContent()
+        public void DrawPanelContent()
         {
             leftPanel.Clear();
             rightPanel.Clear();
@@ -255,6 +255,7 @@ namespace Kanbarudesu.StatSystem.Editor
                         {
                             newAssetName = "";
                             RefreshAll();
+                            DrawPanelContent();
                             Repaint();
                         }
                     }

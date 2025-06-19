@@ -11,22 +11,22 @@ namespace Kanbarudesu.StatSystem.Editor
 
     public class UnitStatsAssetEditor : BaseAssetEditor<UnitStats>
     {
-        public UnitStatsAssetEditor(string folderPath) : base(folderPath) { }
+        public UnitStatsAssetEditor(string folderPath, StatsSystemEditorWindow window) : base(folderPath, window) { }
     }
 
     public class StatusEffectsAssetEditor : BaseAssetEditor<StatusEffect>
     {
-        public StatusEffectsAssetEditor(string folderPath) : base(folderPath) { }
+        public StatusEffectsAssetEditor(string folderPath, StatsSystemEditorWindow window) : base(folderPath, window) { }
     }
 
     public class IdentifiersAssetEditor : BaseAssetEditor<StatusEffectIdentifier>
     {
-        public IdentifiersAssetEditor(string folderPath) : base(folderPath) { }
+        public IdentifiersAssetEditor(string folderPath, StatsSystemEditorWindow window) : base(folderPath, window) { }
     }
 
     public class StatFormulaAssetEditor : BaseAssetEditor<StatFormula>
     {
-        public StatFormulaAssetEditor(string folderPath) : base(folderPath) { }
+        public StatFormulaAssetEditor(string folderPath, StatsSystemEditorWindow window) : base(folderPath, window) { }
     }
 
     public interface IAssetEditor
@@ -44,12 +44,14 @@ namespace Kanbarudesu.StatSystem.Editor
         protected List<T> assetList = new List<T>();
         protected T selectedAsset;
         protected Editor cachedEditor;
+        protected StatsSystemEditorWindow parentWindow;
 
         public string FolderPath { get; set; }
 
-        public BaseAssetEditor(string folderPath)
+        public BaseAssetEditor(string folderPath, StatsSystemEditorWindow window)
         {
             FolderPath = folderPath;
+            parentWindow = window;
         }
 
         public virtual void RefreshAssets()
@@ -208,6 +210,7 @@ namespace Kanbarudesu.StatSystem.Editor
                         selectedAsset = null;
 
                     RefreshAssets();
+                    parentWindow?.DrawPanelContent();
                 }
             });
 

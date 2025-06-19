@@ -9,21 +9,30 @@ namespace Kanbarudesu.StatSystem.Editor
     [CustomEditor(typeof(StatusEffect))]
     public class StatusEffectEditor : Editor
     {
-        private SerializedObject so;
         private ReorderableList modifierList;
 
         private void OnEnable()
         {
-            modifierList = new ReorderableList(serializedObject, serializedObject.FindProperty("Modifiers"), true, true, true, true);
-            modifierList.drawHeaderCallback = DrawHeader;
-            modifierList.drawElementCallback = DrawElement;
-            modifierList.elementHeightCallback = DrawElementHeight;
+            if (serializedObject == null || target == null) return;
+            modifierList = new ReorderableList(serializedObject, serializedObject.FindProperty("Modifiers"), true, true, true, true)
+            {
+                drawHeaderCallback = DrawHeader,
+                drawElementCallback = DrawElement,
+                elementHeightCallback = DrawElementHeight
+            };
         }
 
         public override VisualElement CreateInspectorGUI()
         {
-            so = new SerializedObject(target);
             var container = new ScrollView();
+
+            Label assetLabel = new Label(target.name);
+            assetLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+            container.Add(assetLabel);
+
+            VisualElement spacer = new VisualElement();
+            spacer.style.height = 10;
+            container.Add(spacer);
 
             container.Add(new PropertyField(serializedObject.FindProperty("EffectName")));
             container.Add(new PropertyField(serializedObject.FindProperty("Duration")));
@@ -43,8 +52,8 @@ namespace Kanbarudesu.StatSystem.Editor
 
         private void CustomIconPreviewField()
         {
-            so.Update();
-            var iconProp = so.FindProperty("Icon");
+            serializedObject.Update();
+            var iconProp = serializedObject.FindProperty("Icon");
             EditorGUIUtility.labelWidth = 124;
             iconProp.objectReferenceValue = (Sprite)EditorGUILayout.ObjectField("Icon", iconProp.objectReferenceValue, typeof(Sprite), false);
             iconProp.serializedObject.ApplyModifiedProperties();
@@ -52,7 +61,7 @@ namespace Kanbarudesu.StatSystem.Editor
 
         private void CustomModifierField()
         {
-            so.Update();
+            serializedObject.Update();
             modifierList.DoLayoutList();
             modifierList.serializedProperty.serializedObject.ApplyModifiedProperties();
         }
@@ -80,7 +89,8 @@ namespace Kanbarudesu.StatSystem.Editor
             float verticalPadding = EditorGUIUtility.standardVerticalSpacing;
             Rect r = new Rect(rect.x, rect.y, rect.width, lineHeight);
 
-            var content = modifierTypeProp.enumNames[modifierTypeProp.enumValueIndex] + " Modifier";
+            int enumIndex = modifierTypeProp.enumValueIndex;
+            var content = modifierTypeProp.enumNames[enumIndex] + " Modifier";
             element.isExpanded = EditorGUI.Foldout(new Rect(r.x, r.y, r.width - 20f, lineHeight), element.isExpanded, content, true);
 
             if (element.isExpanded && element.NextVisible(true))

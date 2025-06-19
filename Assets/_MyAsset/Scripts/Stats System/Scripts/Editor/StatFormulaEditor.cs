@@ -23,7 +23,7 @@ namespace Kanbarudesu.StatSystem.Editor
             var root = new ScrollView();
 
             // Create formula text area with default styling
-            formulaField = new TextField("Formula :")
+            formulaField = new TextField($"Formula : ({target.name})")
             {
                 multiline = true
             };

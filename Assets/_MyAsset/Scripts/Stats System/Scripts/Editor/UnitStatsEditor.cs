@@ -43,6 +43,7 @@ namespace Kanbarudesu.StatSystem.Editor
 
             if (availableStatTypes.Count > 0)
             {
+                EditorGUILayout.LabelField(target.name, EditorStyles.boldLabel);
                 EditorGUILayout.Space();
                 EditorGUILayout.LabelField("Add New Stat", EditorStyles.boldLabel);
 
