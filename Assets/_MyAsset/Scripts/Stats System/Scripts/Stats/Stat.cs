@@ -106,6 +106,11 @@ namespace Kanbarudesu.StatSystem
             return Modifiers.FindAll(mod => !mod.IsPercentage);
         }
 
+        public void ClearEventHooks()
+        {
+            OnStatChanged = null;
+        }
+
         private float ValidateValue(float value)
         {
             if (value < MinValue)

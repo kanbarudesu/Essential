@@ -264,6 +264,18 @@ namespace Kanbarudesu.StatSystem
             return raw.Select(kvp => (kvp.Key, kvp.Value.Before, kvp.Value.After)).ToList();
         }
 
+        public void ClearAllStatEventHooks()
+        {
+            foreach (var stat in Stats)
+            {
+                stat.ClearEventHooks();
+            }
+            foreach (var runtimeStat in runtimeStats.Values)
+            {
+                runtimeStat.ClearEventHooks();
+            }
+        }
+        
 #if UNITY_EDITOR
         [ContextMenu("Log Stat Dependency Graph")]
         public void LogDependencyGraph()

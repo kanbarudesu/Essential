@@ -55,5 +55,11 @@ namespace Kanbarudesu.StatSystem
             CurrentValue = MaxValue;
             OnRuntimeStatChanged?.Invoke(CurrentValue);
         }
+
+        public void ClearEventHooks()
+        {
+            OnRuntimeStatChanged = null;
+            OnMaxStatChanged = null;
+        }
     }
 }
